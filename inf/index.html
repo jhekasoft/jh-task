@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>TimeTODO</title>
+        <link rel="stylesheet" href="css/style.css" type="text/css" />
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/jquery.tools.min.js"></script>
+        <!--[if IE 6]><script type="text/javascript" src="js/ie6fix.js"></script><script type="text/javascript">DD_belatedPNG.fix('.png24');</script><![endif]-->
+        <script type="text/javascript" src="js/cufon.js"></script>
+        <script type="text/javascript" src="js/font.js"></script>
+        <script type="text/javascript">Cufon.replace(".font");</script>
+        <script type="text/javascript">
+            function toggleCheck(num) {
+                if($('#todo_'+num).is(':checked')) {
+                    $('#todo_'+num).attr('checked', false);
+                }
+                else {
+                    $('#todo_'+num).attr('checked', true);
+                }
+            }
+            
+            function toggleAllCheck(bottom) {
+                checkboxId = 'todo_all_'+'top';
+                checkboxOtherId = 'todo_all_'+'bottom';
+                if(bottom) {
+                    checkboxId = 'todo_all_'+'bottom';
+                    checkboxOtherId = 'todo_all_'+'top';
+                }
+                
+                if($('#'+checkboxId).is(':checked')) {
+                    $('.checkbox_todo').attr('checked', true);
+                }
+                else {
+                    $('.checkbox_todo').attr('checked', false);
+                }
+                
+                $('#'+checkboxOtherId).attr('checked', $('#'+checkboxId).is(':checked'));
+            }
+            
+//            $(document).ready(function() {
+//                $('tr.table-tr-todo').hover(function() {
+//                    $(this).css('border-left', '1px solid #000');
+//                    $(this).css('border-right', '1px solid #000');
+//                });
+//                $('tr.table-tr-todo').mouseleave(function() {
+//                    $(this).css('border-left', 'none');
+//                    $(this).css('border-right', 'none');
+//                });
+//            });
+        </script>
+    </head>
+    <body>
+        <div id="container">
+            <div id="main">
+
+                <h1>Задания</h1>
+                
+                <div class="todo-tabs">
+					<span>Текущие</span>
+					<a href="#">Выполненные</a>
+				</div>
+                
+                <table class="todo-table">
+                    <tr>
+                        <th class="center"><input type="checkbox" name="todo_all" id="todo_all_top" class="todo_all" onclick="toggleAllCheck();" /></th>
+                        <th>Задание</th>
+                        <th>Выполнено</th>
+                        <th>Удалить</th>
+                    </tr>
+                    <tr class="table-tr-todo">
+                        <td class="center"><input type="checkbox" class="checkbox_todo" name="todo todo_1" id="todo_1" /></td>
+                        <td class="todo-table-tr-td-min" onclick="toggleCheck(1);">Погладить кота</td>
+                        <td class="center"><a href="#" title="Молодец!">Готово</a></td>
+                        <td class="center"><a href="#" class="danger" title="Подумай!">X</a></td>
+                    </tr>
+                    <tr class="table-tr-todo table-tr-notice">
+                        <td class="center"><input type="checkbox" class="checkbox_todo" name="todo_2" id="todo_2" /></td>
+                        <td class="todo-table-tr-td-min" onclick="toggleCheck(2);">Купить хлеб.</br>Серый.</td>
+                        <td class="center"><a href="#" title="Молодец!">Готово</a></td>
+                        <td class="center"><a href="#" class="danger" title="Подумай!">X</a></td>
+                    </tr>
+                    <tr class="table-tr-todo table-tr-warning">
+                        <td class="center"><input type="checkbox" class="checkbox_todo" name="todo_3" id="todo_3" /></td>
+                        <td class="todo-table-tr-td-min" onclick="toggleCheck(3);">Купить бас-гитару.</td>
+                        <td class="center"><a href="#" title="Молодец!">Готово</a></td>
+                        <td class="center"><a href="#" class="danger" title="Подумай!">X</a></td>
+                    </tr>
+                    <tr class="table-tr-todo table-tr-good">
+                        <td class="center"><input type="checkbox" class="checkbox_todo" name="todo_4" id="todo_4" /></td>
+                        <td class="todo-table-tr-td-min" onclick="toggleCheck(4);">Покорить мир.</td>
+                        <td class="center"><a href="#" title="Молодец!">Готово</a></td>
+                        <td class="center"><a href="#" class="danger" title="Подумай!">X</a></td>
+                    </tr>
+                    <tr class="table-tr-spec table-tr-min">
+                        <td class="center"><input type="checkbox" name="todo_all" id="todo_all_bottom" class="todo_all" onclick="toggleAllCheck(true);" /></td>
+                        <td class="right">с выделенными:</td>
+                        <td class="center"><a href="#" title="Молодец!">Готово</a></td>
+                        <td class="center"><a href="#" class="danger" title="Подумай!">X</a></td>
+                    </tr>
+                </table>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div id="footer">
+            &copy; 2012 <a href="./">TimeTODO</a>
+        </div>
+    </body>
+</html>
